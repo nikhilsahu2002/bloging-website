@@ -25,5 +25,5 @@ urlpatterns = [
     path('logout/',views.logout),
     path("Admin/", views.Admin, name="Admin Panel"),
     path('table/',views.table,name = "tables"),
-     path('restricted/', views.create_article, name='restricted-page'),
+    path('restricted/', views.create_article, name='restricted-page'),
 ]

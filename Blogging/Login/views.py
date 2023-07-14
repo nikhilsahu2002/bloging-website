@@ -75,7 +75,7 @@ def create_article(request):
     return render(request, 'restricted.html')
 
 def table(request):
-    articles = NewsArticle.objects.all()
+    articles = NewsArticle.objects.filter(user=request.user)
     paginator = Paginator(articles, 10)  # Set the number of articles per page
 
     page_number = request.GET.get('page')
@@ -90,4 +90,3 @@ def table(request):
 @login_required(login_url='/Login/')
 def Admin(request):
     return render(request,'index.html')
-
