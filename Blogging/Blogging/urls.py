@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Login.views import restricted_page
+# from Login.views import restricted_page
 from Login import views
 
 urlpatterns = [
@@ -23,5 +23,7 @@ urlpatterns = [
     path('Registraion/',views.reg),
     path('Login/',views.login),
     path('logout/',views.logout),
-     path('restricted/', restricted_page, name='restricted-page'),
+    path("Admin/", views.Admin, name="Admin Panel"),
+    path('table/',views.table,name = "tables"),
+     path('restricted/', views.create_article, name='restricted-page'),
 ]
