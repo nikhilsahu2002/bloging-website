@@ -6,21 +6,28 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout as auth_logout
 
 # Create your views here.
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.urls import reverse
+
 def reg(request):
     if request.method == "POST":
         if request.POST['password1'] == request.POST['password2']:
             try:
-                User.objects.get(username = request.POST['username'])
-                return render (request,'Registration.html', {'error':'Username is already taken!'})
+                User.objects.get(username=request.POST['username'])
+                return render(request, 'Registration.html', {'error': 'Username is already taken!'})
             except User.DoesNotExist:
-                user = User.objects.create_user(request.POST['username'],password=request.POST['password1'])
-                auth.login(request,user)
+                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                auth.login(request, user)
                 user.save()
-                return HttpResponse("User Is exist")
+                # Redirect to the 'login' URL
+                return redirect('/login/')
         else:
-            return render (request,'Registration.html', {'error':'Password does not match!'})
+            return render(request, 'Registration.html', {'error': 'Password does not match!'})
     else:
-        return render(request,'Registration.html')
+        return render(request, 'Registration.html')
+
 
 def login(request):
     if request.user.is_authenticated:
