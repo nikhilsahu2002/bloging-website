@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Login.views import restricted_page
 from Login import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Registraion',views.reg),
-    path('Login',views.login),
+    path('Registraion/',views.reg),
+    path('Login/',views.login),
+    path('logout/',views.logout),
+     path('restricted/', restricted_page, name='restricted-page'),
 ]

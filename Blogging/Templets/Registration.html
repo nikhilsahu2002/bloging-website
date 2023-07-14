@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% comment %} <link rel="stylesheet" href="{% static 'static/css/style.css' %}"> {% endcomment %}
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
       <!-- MDB -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
 <!-- Font Awesome -->
@@ -22,7 +22,7 @@
     <center style="image-rendering: auto;
     background-image: url('https://img.freepik.com/free-photo/chicken-wings-barbecue-sweetly-sour-sauce-picnic-summer-menu-tasty-food-top-view-flat-lay_2829-6471.jpg?w=2000');" >
         <div style="padding:100px;">
-            <form class="form" action="" method="post">
+            <form class="form"  method="post">
                 {% csrf_token %}
                 <p class="title">Register</p>
                 <p class="message">Signup now and get full access to our app.</p>
