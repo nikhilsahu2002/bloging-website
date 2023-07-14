@@ -38,7 +38,7 @@ def logout(request):
     return redirect('/Login/')
 
 
-@login_required
+@login_required(login_url='/Login/')
 def restricted_page(request):
     return render(request, 'restricted.html')
 
