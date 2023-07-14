@@ -23,16 +23,19 @@ def reg(request):
         return render(request,'Registration.html')
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('/')
+    
     if request.method == 'POST':
-        user = auth.authenticate(username=request.POST['username'],password = request.POST['password'])
+        user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
-            auth.login(request,user)
+            auth.login(request, user)
             return redirect('/')
         else:
-            return render (request,'login.html', {'error':'Username or password is incorrect!'})
+            return render(request, 'login.html', {'error': 'Username or password is incorrect!'})
     else:
-        return render(request,'login.html')
-
+        return render(request, 'login.html')
+    
 def logout(request):
     auth_logout(request)
     return redirect('/Login/')
