@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.urls import reverse
 
+
+
 from Login.models import NewsArticle
 
 def reg(request):
@@ -62,7 +64,12 @@ def create_article(request):
         image = request.FILES.get('image')
         date = request.POST.get('date')
 
-        article = NewsArticle(headline=headline, description=description,date = date)
+        article = NewsArticle(
+            user=request.user,
+            headline=headline,
+            description=description,
+            date=date
+        )
         
         if image_url:
             article.image_url = image_url
@@ -70,10 +77,11 @@ def create_article(request):
             article.image = image
 
         article.save()
-        return HttpResponse("page Is Stored")  # Redirect to a success page or a different URL
+        return HttpResponse("Article is stored successfully.")
 
     return render(request, 'restricted.html')
 
+@login_required(login_url='/Login/')
 def table(request):
     articles = NewsArticle.objects.filter(user=request.user)
     paginator = Paginator(articles, 10)  # Set the number of articles per page
@@ -82,7 +90,6 @@ def table(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'tables.html', {'page_obj': page_obj})
-
 # Restricted Views 
 # def restricted_page(request):
 #     return render(request, 'restricted.html')
