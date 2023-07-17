@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+<body style="background-color : rgba(238, 238, 238, 0.812);">
+    <center>
+        <h1 style="font-style:itallic; color: black;"> INDIAN FOOD </h1>
+      </center>
+    
+      <div class="container"
+        style="border: 0px solid black; width: 80%; margin-top: 120px; background-color: rgb(255, 255, 255);">
+        </style>
+        <!-- box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); "> -->
+        <center>
+          <center><img src="north-indian.jpg" width="600px " style="margin-top: 20px;"></center>
+          <h1>17+ THALI AND INDIAN LUNCH MENU RECIPES</h1>
+          <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">The Indian thali is a wholesome combination of
+            colorful
+            dishes served next to each other on a single plate. It is the perfect depiction of Indian cuisine. My thali meal
+            ideas are utterly simple, nourishing, and full of flavors.‘Thali’ is a Hindi word for – a big, round plate
+            on which food is served. Small eating bowls known as ‘katori’ are placed within the thali, each
+            containing a dish. This whole platter is served as a set meal for lunch or dinner. The portion size of
+            thali is sufficient for an individual.
+    
+            A thali meal is an age-old Indian tradition that is hard to find nowadays in modern families due to busy
+            schedules. Still, there are many restaurants and food joints that serve these set meal
+            platters with traditional Indian dishes.
+            ‘Thali’ is a Hindi word for – a big, round plate on which food is served. Small eating bowls known as ‘katori’ 
+            are placed within the thali, each containing a dish. This whole platter is served as a set meal for lunch or
+             dinner. The portion size of thali is sufficient for an individual.
+
+            A thali meal is an age-old Indian tradition that is hard to find nowadays in modern families due to busy schedules. Still, 
+             there are many restaurants and food joints that serve these set meal platters with traditional Indian dishes.
+
+
+    
+          </p>
+        </center>
+      
+        <center>
+          <h1 style="font-style:itallic;">COMMENT</h1>
+      </center>
+      
+      <center>
+          <center>
+              <div class="container"
+                   style="border: 0px solid black; width: 80%;  background-color: rgb(255, 255, 255);">
+  
+                  <form style="border: 2px solid black; width: 80%;" action="comment" method="POST">
+                      {% csrf_token %}
+                      <div>
+                          NAME-<input type="text" name="name" placeholder="name">
+                      </div>
+                      <br>
+                      <div>
+                          EMAIL-<input type="email" name="email" placeholder="email">
+                      </div>
+                      <br>
+                      <div>
+                          <button type="submit">SUBMIT</button>
+                      </div>
+                      </form>
+              </div>
+          </center>
+      </center>
+      </div>
+    </center>
+</body>
+</html>
