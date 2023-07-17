@@ -109,7 +109,5 @@ def Food(req):
 def rest(req):
     return render(req,"restaurant.html")
 
-def delete(request, article_id):
-    article = get_object_or_404(NewsArticle, id=article_id)
-    article.delete()
-    return HttpResponse("deleted")
+def about(req):
+    return render(req,"about.html")
