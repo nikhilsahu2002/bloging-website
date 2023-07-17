@@ -20,8 +20,11 @@ from Login import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("",views.hone),
     path('Registraion/',views.reg),
     path('Login/',views.login),
+    path('food/',views.Food),
+    path('restaurant/',views.rest),
     path('logout/',views.logout),
     path("Admin/", views.Admin, name="Admin Panel"),
     path('table/',views.table,name = "tables"),

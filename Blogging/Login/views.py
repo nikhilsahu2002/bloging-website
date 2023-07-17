@@ -97,3 +97,14 @@ def table(request):
 @login_required(login_url='/Login/')
 def Admin(request):
     return render(request,'index.html')
+
+
+def hone(request):
+    return render(request,"home.html")
+
+def Food(req):
+    return render(req,"Food.html")
+
+
+def rest(req):
+    return render(req,"restaurant.html")
