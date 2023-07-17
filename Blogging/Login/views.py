@@ -111,3 +111,5 @@ def rest(req):
 
 def about(req):
     return render(req,"about.html")
+def drink(req):
+    return render(req,"drinks.html")
