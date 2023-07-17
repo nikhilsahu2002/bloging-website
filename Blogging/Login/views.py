@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import get_object_or_404, render,redirect,HttpResponse
 from django.contrib import messages,auth
 from django.contrib.auth.models import User 
 from django.contrib.auth.decorators import login_required
@@ -108,3 +108,8 @@ def Food(req):
 
 def rest(req):
     return render(req,"restaurant.html")
+
+def delete(request, article_id):
+    article = get_object_or_404(NewsArticle, id=article_id)
+    article.delete()
+    return HttpResponse("deleted")

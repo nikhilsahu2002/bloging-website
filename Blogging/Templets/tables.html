@@ -348,11 +348,16 @@
                                             <td>{{ article.date }}</td>
                                         </tr>
                                     {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                            <!-- Pagination links -->
+                                    <td>{{ article.date }}</td>
+                <td>
+                    <!-- Add button for deleting the post -->
+                </td>
+                
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Pagination links -->
                             <div class="pagination">
                                 <span class="step-links">
                                     {% if articles.has_previous %}
@@ -365,8 +370,8 @@
         {% if articles.has_next %}
             <a href="?page={{ articles.next_page_number }}">next</a>
             <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-                                </span>
+            {% endif %}
+        </span>
                             </div>
                                             <!-- /.container-fluid -->
 
