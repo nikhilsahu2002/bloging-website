@@ -340,9 +340,9 @@
                                             <td>{{ article.description }}</td>
                                             <td>
                                                 {% if article.image_url %}
-                                                    <img src="{{ article.image_url }}" alt="Article Image">
+                                                    <img src="{{ article.image_url }} " width="200px" height="200px"  alt="Article Image">
                                                 {% elif article.image %}
-                                                    <img src="{{ article.image.url }}" alt="Article Image">
+                                                    <img src="{{ article.image.url }}" width="200px" height="200px" alt="Article Image">
                                                 {% endif %}
                                             </td>
                                             <td>{{ article.date }}</td>
