@@ -37,6 +37,7 @@ class NewsArticle(models.Model):
         return self.headline
 
 class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default=True)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     comment = models.TextField()
