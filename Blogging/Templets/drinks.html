@@ -69,25 +69,26 @@ rel="stylesheet"
     
 
     <center><div class="container" style="border: 0px solid black;">
-        <center><img src=drink1.jpg    height="400" width="700px" ></center>
+      <center>
+        {% for i in context %}
+    <center>
+      {% if i.image %}
+      <img src="{{ i.image.url }}" height="400px" width="700px" style="margin-top: 20px;">
+      {% elif i.image_url %}
+      <img src="{{ i.image_url }}" height="400px" width="700px" style="margin-top: 20px;">
+      {% endif %}
+      </center>
         <br>
         <div style="font-style: italic;">
-        <h3>10 Festive Pride Cocktails To Party With</h3></div>
-       
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aliquid
-             corporis ut fugiat! Nulla omnis quaerat sint cum, soluta magnam iste dolorem 
-             officiis harum aspernatur consequuntur accusamus ipsa voluptas repellendus.</p></div></center>
-             <br>
-
-
-    <center><div class="container" style="border: 0px solid black;">
-        <center><img src=drink2.jpg     height="400px" width="700px" ></center>
-        <br>
-        <div style="font-style: italic;">
-        <h3>10 Healthy Drinks For Happy Souls</h3></div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aliquid
-            corporis ut fugiat! Nulla omnis quaerat sint cum, soluta magnam iste dolorem 
-            officiis harum aspernatur consequuntur accusamus ipsa voluptas repellendus.</p></div></center>
+          <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
+            {{ i.headline }}
+          </a>
+          <p>
+            {{i.description}}
+          </p>
+        </div>
+        {% endfor %}
+      </center>
             <br>
 
     <center><div class="container" style="border: 0px solid black;">

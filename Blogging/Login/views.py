@@ -12,7 +12,7 @@ from django.urls import reverse
 
 
 
-from Login.models import NewsArticle
+from Login.models import NewsArticle,Comment
 
 def reg(request):
     if request.user.is_authenticated:
@@ -63,12 +63,14 @@ def create_article(request):
         image_url = request.POST.get('image_url')
         image = request.FILES.get('image')
         date = request.POST.get('date')
+        category = request.POST.get('category')
 
         article = NewsArticle(
             user=request.user,
             headline=headline,
             description=description,
-            date=date
+            date=date,
+            category=category
         )
         
         if image_url:
@@ -80,7 +82,6 @@ def create_article(request):
         return HttpResponse("Article is stored successfully.")
 
     return render(request, 'restricted.html')
-
 @login_required(login_url='/Login/')
 def table(request):
     articles = NewsArticle.objects.filter(user=request.user)
@@ -99,17 +100,47 @@ def Admin(request):
     return render(request,'index.html')
 
 
+def comment(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        comment = request.POST.get('comment')
+
+        Comment.objects.create(name=name, email=email, comment=comment)
+
+        return HttpResponse("Comment submitted successfully!")
+
+    return render(request, 'thali.html')
+
 def hone(request):
     return render(request,"home.html")
 
 def Food(req):
-    return render(req,"Food.html")
+    context = NewsArticle.objects.filter(category='food')
+    return render(req,"Food.html",{"contex" : context})
 
 
 def rest(req):
-    return render(req,"restaurant.html")
+        context = NewsArticle.objects.filter(category='restaurant')
+        return render(req,"restaurant.html",{"context" : context})
 
 def about(req):
     return render(req,"about.html")
 def drink(req):
-    return render(req,"drinks.html")
+    context = NewsArticle.objects.filter(category='drink')
+    return render(req,"drinks.html",{'context': context})
+
+def your_view(request, slug):
+    article = get_object_or_404(NewsArticle, slug=slug)
+    articles = [article]  # Wrap the single object in a list
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        comment_text = request.POST.get('comment')
+
+        # Create a new comment object
+        comment = Comment(name=name, email=email, comment=comment_text)
+        comment.save()
+
+    return render(request, 'thali.html', {'articles': articles})

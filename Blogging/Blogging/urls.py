@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 # from Login.views import restricted_page
 from Login import views
 
@@ -26,10 +28,13 @@ urlpatterns = [
     path('food/',views.Food),
     path('about/',views.about),
     path('drink/',views.drink),
+    # path('<slug:slug>',views.comment),
+     path('food/<slug>/', views.your_view, name='your_view'),
     # path('delete/<int:article_id>/', views.delete, name='delete'),
     path('restaurant/',views.rest),
+    path('restaurant/<slug>',views.your_view),
     path('logout/',views.logout),
     path("Admin/", views.Admin, name="Admin Panel"),
     path('table/',views.table,name = "tables"),
     path('restricted/', views.create_article, name='restricted-page'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

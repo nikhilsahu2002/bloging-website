@@ -29,24 +29,23 @@
     </style>
     <!-- box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); "> -->
     <center>
-      <center><img src="{% static 'img/4.jpg' %}" width="600px " style="margin-top: 20px;"></center>
-      <h1>17+ THALI AND INDIAN LUNCH MENU RECIPES</h1>
-      <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">The Indian thali is a wholesome combination of
-        colorful
-        dishes served next to each other on a single plate. It is the perfect depiction of Indian cuisine. My thali meal
-        ideas are utterly simple, nourishing, and full of flavors.‘Thali’ is a Hindi word for – a big, round plate
-        on which food is served. Small eating bowls known as ‘katori’ are placed within the thali, each
-        containing a dish. This whole platter is served as a set meal for lunch or dinner. The portion size of
-        thali is sufficient for an individual.
-
-        A thali meal is an age-old Indian tradition that is hard to find nowadays in modern families due to busy
-        schedules. Still, there are many restaurants and food joints that serve these set meal
-        platters with traditional Indian dishes.
-
-      </p>
+      {% for i in context %}
+    <center>
+    {% if i.image %}
+    <img src="{{ i.image.url }}" width="600px" style="margin-top: 20px;">
+    {% elif i.image_url %}
+    <img src="{{ i.image_url }}" width="600px" style="margin-top: 20px;">
+    {% endif %}
     </center>
-    <br>
-
+    <h1 style="text-align: center;">
+      <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
+        {{ i.headline }}
+      </a>
+    </h1>
+    <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">
+      {{i.description}}
+    </p>
+{% endfor %}
     <center>
       <div class="container" style="border: 0px solid black;">
         <center><img src="{% static 'img/5.jpg' %}" width="600px " style="margin-top: 20px;"></center>
