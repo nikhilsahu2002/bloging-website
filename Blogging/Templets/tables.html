@@ -377,6 +377,72 @@
 
             </div>
             <!-- End of Main Content -->
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">COMMENT</h1>
+                <p class="mb-4">Keep It Simple. Don't be afraid to keep the comment short if you're hesitant 
+                    or don't want to write an essay. ... <a target="_blank"
+                        href="https://datatables.net">official Datacomment documentation</a>.</p>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>EMAIL</th>
+                                        <th>TEXT AREA</th>
+                                        
+                                       
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    {% for article in page_obj %}
+                                    <tr>
+                                        <td>{{ article.headline }}</td>
+                                        <td>{{ article.description }}</td>
+                                        <td>
+                                            {% if article.image_url %}
+                                                <img src="{{ article.image_url }} " width="200px" height="200px"  alt="Article Image">
+                                            {% elif article.image %}
+                                                <img src="{{ article.image.url }}" width="200px" height="200px" alt="Article Image">
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ article.date }}</td>
+                                    </tr>
+                                {% endfor %}
+                                <td>{{ article.date }}</td>
+            <td>
+                <!-- Add button for deleting the post -->
+            </td>
+            
+        </tbody>
+    </table>
+</div>
+
+<!-- Pagination links -->
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if articles.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ articles.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current-page">{{ articles.number }}</span>
+
+    {% if articles.has_next %}
+        <a href="?page={{ articles.next_page_number }}">next</a>
+        <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+                        </div>
+                                        <!-- /.container-fluid -->
+
+        </div>
+            
+
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
