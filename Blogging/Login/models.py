@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 #     salary = models.DecimalField(max_digits=10, decimal_places=2)
 
 
+
 from django.utils import timezone
 
 def get_image_upload_path(instance, filename):
