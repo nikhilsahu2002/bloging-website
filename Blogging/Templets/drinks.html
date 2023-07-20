@@ -1,116 +1,46 @@
 <!DOCTYPE html>
+{% extends 'home.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-  <!-- Font Awesome -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-rel="stylesheet"
-/>    
-<!-- Google Fonts -->
-<link
-href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-rel="stylesheet"    
-/>
-<!-- MDB -->
-<link
-href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
-rel="stylesheet"
-/>
 </head></script>
 <title>Document</title>
 </head>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-<div class="container-fluid">
-<a class="navbar-brand" href="#">Navbar scroll</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarScroll">
-  <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Link
-      </a>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled">Link</a>
-    </li>
-  </ul>
-  <form class="d-flex" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
-</div>
-</div>
-</nav>
-   
-<body style="background-color:darkturquoise;">
+   {% block body %}
 
-    <center><h1 style="font-style: italic;
-        color: black;">DRINKS</h1></center>
-    <center><div class="container" style="border:0px solid black ; width: 80%; margin-top: 12px; background-color:beige;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-    
+   <body style="background-color: rgb(227, 227, 227);">
 
-    <center><div class="container" style="border: 0px solid black;">
-      <center>
-        {% for i in context %}
     <center>
+      <h1 style="font-style:itallic; color: black;margin-top: 100px;"> Drink</h1>
+    </center>
+  
+    <div class="container"
+      style="border: 0px solid black; width: 80%; margin-top: 120px; background-color: rgb(255, 255, 255);">
+      </style>
+  
+    <center>
+      {% for i in context %}
+      <center>
       {% if i.image %}
-      <img src="{{ i.image.url }}" height="400px" width="700px" style="margin-top: 20px;">
+      <img src="{{ i.image.url }}" width="600px" style="margin-top: 20px;">
       {% elif i.image_url %}
-      <img src="{{ i.image_url }}" height="400px" width="700px" style="margin-top: 20px;">
+      <img src="{{ i.image_url }}" width="600px" style="margin-top: 20px;">
       {% endif %}
       </center>
-        <br>
-        <div style="font-style: italic;">
-          <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
-            {{ i.headline }}
-          </a>
-          <p>
-            {{i.description}}
-          </p>
-        </div>
-        {% endfor %}
-      </center>
-            <br>
-
-    <center><div class="container" style="border: 0px solid black;">
-        <center><img src=drink3.jpg     height="400px" width="700px"></center>
-        <div style="font-style: italic;">
-            <h3>20 Easy Vodka Drinks With 4 Ingredients Or Less</h3></div>
-            <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aliquid
-            corporis ut fugiat! Nulla omnis quaerat sint cum, soluta magnam iste dolorem 
-            officiis harum aspernatur consequuntur accusamus ipsa voluptas repellendus.</p></div></center>
-            <br>
-
-     <center><div class="container" style="border: 0px solid black;">
-        <center><img src=drink6.jpg     height="400px" width="700px"></center>
-        <br>
-        <div style="font-style: italic;">
-        <h3>25 Sophisticated Drinks To Get You Feeling Fancy</h3></div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis aliquid
-            corporis ut fugiat! Nulla omnis quaerat sint cum, soluta magnam iste dolorem 
-            officiis harum aspernatur consequuntur accusamus ipsa voluptas repellendus.</p></div></center>
-            <br>
-        </div></center>
-         
+      <h1 style="text-align: center;">
+        <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
+          {{ i.headline }}
+        </a>
+      </h1>
+      <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">
+        {{i.description}}
+      </p>
+  {% endfor %}
+    </div>
+      
 </body>
+{% endblock %}
 </html>
