@@ -10,8 +10,6 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.urls import reverse
 
-
-
 from Login.models import NewsArticle,Comment
 
 def reg(request):
@@ -90,7 +88,14 @@ def table(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'tables.html', {'page_obj': page_obj})
+    Com = Comment.objects.all()
+    paginator1 = Paginator(Com, 10)  # Set the number of articles per page
+
+    page_number1 = request.GET.get('page')
+    page_obj1 = paginator1.get_page(page_number1)
+
+
+    return render(request,'tables.html', {'page_obj': page_obj,'page_obj1': page_obj1})
 # Restricted Views 
 # def restricted_page(request):
 #     return render(request, 'restricted.html')

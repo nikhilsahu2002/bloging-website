@@ -399,24 +399,13 @@
                                 </thead>
                                 
                                 <tbody>
-                                    {% for article in page_obj %}
+                                    {% for article in page_obj1 %}
                                     <tr>
-                                        <td>{{ article.headline }}</td>
-                                        <td>{{ article.description }}</td>
-                                        <td>
-                                            {% if article.image_url %}
-                                                <img src="{{ article.image_url }} " width="200px" height="200px"  alt="Article Image">
-                                            {% elif article.image %}
-                                                <img src="{{ article.image.url }}" width="200px" height="200px" alt="Article Image">
-                                            {% endif %}
-                                        </td>
-                                        <td>{{ article.date }}</td>
+                                        <td>{{ article.name }}</td>
+                                        <td>{{ article.email }}</td>
+                                        <td>{{ article.comment }}</td>
                                     </tr>
                                 {% endfor %}
-                                <td>{{ article.date }}</td>
-            <td>
-                <!-- Add button for deleting the post -->
-            </td>
             
         </tbody>
     </table>
