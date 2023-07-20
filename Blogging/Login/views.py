@@ -121,8 +121,8 @@ def hone(request):
     return render(request,"home.html")
 
 def Food(req):
-    context = NewsArticle.objects.filter(category='food')
-    return render(req,"Food.html",{"contex" : context})
+    context = NewsArticle.objects.filter(category ='food')
+    return render(req,"food.html",{"context" : context})
 
 
 def rest(req):
@@ -131,6 +131,7 @@ def rest(req):
 
 def about(req):
     return render(req,"about.html")
+
 def drink(req):
     context = NewsArticle.objects.filter(category='drink')
     return render(req,"drinks.html",{'context': context})

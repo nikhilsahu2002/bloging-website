@@ -1,167 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
   {% extends 'home.html' %}
+ 
 {% load static %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-  <!-- MDB -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
+  
   <title>document</title>
   
 </head>
-
 {% block body %}
 
-<body style="background-color: rgba(238, 238, 238, 0.812);">
+  <body style="background-color: rgb(227, 227, 227);">
 
-  <center>
-    <h1 style="font-style:itallic; color: black;"> INDIAN FOOD </h1>
-  </center>
-
-  <div class="container"
-    style="border: 0px solid black; width: 80%; margin-top: 120px; background-color: rgb(255, 255, 255);">
-    </style>
-    <!-- box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); "> -->
+    <center>
+      <h1 style="font-style:itallic; color: black;"> Food</h1>
+    </center>
+  
+    <div class="container"
+      style="border: 0px solid black; width: 80%; margin-top: 120px; background-color: rgb(255, 255, 255);">
+      </style>
+  
     <center>
       {% for i in context %}
-    <center>
-    {% if i.image %}
-    <img src="{{ i.image.url }}" width="600px" style="margin-top: 20px;">
-    {% elif i.image_url %}
-    <img src="{{ i.image_url }}" width="600px" style="margin-top: 20px;">
-    {% endif %}
-    </center>
-    <h1 style="text-align: center;">
-      <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
-        {{ i.headline }}
-      </a>
-    </h1>
-    <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">
-      {{i.description}}
-    </p>
-{% endfor %}
-    <center>
-      <div class="container" style="border: 0px solid black;">
-        <center><img src="{% static 'img/5.jpg' %}" width="600px " style="margin-top: 20px;"></center>
-        <h2>10+ MOST POPULAR SOUTH INDIAN FOOD YOU SHOULD NOT MISS!</h2>
-        <p style="width: 800px; font-family: 'Kelvinch',sans-serif;">South Indian cuisine is one of the most popular
-          native cuisines of India. It is primarily a combination of the food of the five states of Andhra
-          Pradesh, Karnataka, Telangana, Tamil Nadu and Kerala, and the union territories of Pondicherry,
-          Lakshadweep and Andaman and Nicobar Islands. The cuisines all use spices unique to the region and the
-          cuisines majorly differ in the level of spiciness.
-
-          South Indian food is known for the use of generous coconut in their curries. Other basic and
-          common ingredients include curry leaves, mustard oil, red chillies and oil etc. Here we have tried to
-          demystify and explain the different cuisines of South India. Have a look!
-
-
-        </p>
-        <br>
-      </div>
-
       <center>
-        <div class="container" style="border: 0px solid black;">
-          <center><img src="{% static 'img/f3.webp' %}" width="600px "></center>
-          <h1>25+ INDIAN BREAKFAST</h1>
-          <p style="width: 800px; font-family: 'Kelvinch',sans-serif;">Breakfast in Uttar Pradesh, one of the largest
-            states in India varies widely with the various regions of the state. They range from breakfasts as simple
-            as haath ki roti with fresh white butter, green mint chutney and lassi, to richer breakfasts
-            containing a trio of a fried main dish, a sweet accompaniment and a milk-based beverage.
-            This can be a combination of samosa or kachori and jalebi
-            from the western Braj region of Mathura-Vrindawan, the crispy urad dal-stuffed Bedmi poori with aloo gravy
-            and jalebi of Agra, or kachori-sabji, jalebi and dahi of Varanasi.
-
-
-          </p>
-
-          <center>
-            <div class="container" style="border: 0px solid black;">
-              <center><img src="{% static 'img/f1.jpg' %}" width="600px "></center>
-              <h1>30 BEST INDIAN STREET FOOD</h1>
-              <p style="width: 800px; font-family: 'Kelvinch',sans-serif;">You may visit countries and
-                try their prominent street foods, but we bet the taste won't match the one you'll have in the
-                Street food of India. From mouth-watering Paani Puri, the Dahi Bhallas to the Chaat Papdi Indian
-                Street foods are delicious. As diverse as is the country, it experiences a manifold
-                of cuisines, each having at least one speciality of Street Food.
-                INDIAN STREET FOOD QUICK LINKS
-                If you’re planning a trip to India and want to learn more about the street food, then you may be
-                interested
-                in joining a food tour. Get Your Guide offers several street food and other food-related tours in India.
-
-                TOURS
-                Food Tours: Food and Market Tours in India
-
-
-              </p>
-
-              <center>
-                <div class="container" style="border: 0px solid black;">
-                  <center><img src="{% static 'img/f3.webp' %}" width="600px "></center>
-                  <h1>10 VEG NORTH INDIAN CURRIES FOR THE SPICY FOOD LOVER</h1>
-                  <p style="width: 800px; font-family: 'Kelvinch',sans-serif;">North Indian Food has a plethora
-                    of vegetables, grains and spices making the cuisine colourful and spicy. This recipe list contains
-                    few of the most popular North Indian dishes. Whether you are looking for some spicy gravy based
-                    curry or just some dry vegetable, we have it for you in this list. Have these North Indian
-                    dishes with chapathi or rice and fulfil all your spicy food cravings. Be it Dum Aloo, Paneer
-                    Butter Masala or Rajma Curry - this list of North Indian Food Recipes is all you should need.
-
-
-                  </p>
-                </div>
-                
-              </div>
-            </div>
-          </center> 
-        </div> 
+      {% if i.image %}
+      <img src="{{ i.image.url }}" width="600px" style="margin-top: 20px;">
+      {% elif i.image_url %}
+      <img src="{{ i.image_url }}" width="600px" style="margin-top: 20px;">
+      {% endif %}
       </center>
-    </center> 
-    <br>
-    <footer class="bg-dark text-center text-white">
-      <!-- Grid container -->
-      <div class="container p-4 pb-0">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-          <!-- Facebook -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-              class="fab fa-facebook-f"></i></a>
-
-          <!-- Twitter -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-              class="fab fa-twitter"></i></a>
-
-          <!-- Google -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-              class="fab fa-google"></i></a>
-
-          <!-- Instagram -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-              class="fab fa-instagram"></i></a>
-
-          <!-- Linkedin -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-              class="fab fa-linkedin-in"></i></a>
-
-          <!-- Github -->
-          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
-              class="fab fa-github"></i></a>
-        </section>
-        <!-- Section: Social media -->
-      </div>
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2020 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
-    {% endblock  %}
+      <h1 style="text-align: center;">
+        <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
+          {{ i.headline }}
+        </a>
+      </h1>
+      <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">
+        {{i.description}}
+      </p>
+  {% endfor %}
+    </div>
+      
+    
   </body>
+  {% endblock  %}
 </html>
