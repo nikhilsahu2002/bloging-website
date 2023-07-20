@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 # from Login.views import restricted_page
 from Login import views
 
-urlpatterns = [
+urlpatterns = [   
     path('admin/', admin.site.urls),
     path("",views.hone),
     path('Registraion/',views.reg),
