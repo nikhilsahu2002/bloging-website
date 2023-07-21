@@ -80,6 +80,7 @@ def create_article(request):
         return HttpResponse("Article is stored successfully.")
 
     return render(request, 'restricted.html')
+
 @login_required(login_url='/Login/')
 def table(request):
     # Get the articles created by the current user
