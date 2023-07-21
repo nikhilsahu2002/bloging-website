@@ -109,10 +109,10 @@ def table(request):
                 comment.delete()
             else:
                 # Handle the case when the comment ID is missing or empty
-                return redirect('table')
+                return redirect('/table/')
 
         # Redirect back to the same page after deleting
-        return redirect('table')
+        return redirect('/table/')
 
     return render(request, 'tables.html', {'page_obj': page_obj, 'page_obj1': page_obj1})
 # Restricted Views 
