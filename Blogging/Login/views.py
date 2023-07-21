@@ -82,20 +82,39 @@ def create_article(request):
     return render(request, 'restricted.html')
 @login_required(login_url='/Login/')
 def table(request):
+    # Get the articles created by the current user
     articles = NewsArticle.objects.filter(user=request.user)
     paginator = Paginator(articles, 10)  # Set the number of articles per page
-
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    Com = Comment.objects.all()
-    paginator1 = Paginator(Com, 10)  # Set the number of articles per page
-
+    # Get the comments made by the current user
+    comments = Comment.objects.filter(user=request.user)
+    paginator1 = Paginator(comments, 10)  # Set the number of comments per page
     page_number1 = request.GET.get('page')
     page_obj1 = paginator1.get_page(page_number1)
 
+    if request.method == 'POST':
+        # Delete Article
+        if 'delete_article' in request.POST:
+            article_id = request.POST.get('delete_article')
+            article = get_object_or_404(NewsArticle, id=article_id, user=request.user)
+            article.delete()
 
-    return render(request,'tables.html', {'page_obj': page_obj,'page_obj1': page_obj1})
+        # Delete Comment
+        if 'delete_comment' in request.POST:
+            comment_id = request.POST.get('delete_comment')
+            if comment_id:
+                comment = get_object_or_404(Comment, id=comment_id, user=request.user)
+                comment.delete()
+            else:
+                # Handle the case when the comment ID is missing or empty
+                return redirect('table')
+
+        # Redirect back to the same page after deleting
+        return redirect('table')
+
+    return render(request, 'tables.html', {'page_obj': page_obj, 'page_obj1': page_obj1})
 # Restricted Views 
 # def restricted_page(request):
 #     return render(request, 'restricted.html')
@@ -104,7 +123,7 @@ def table(request):
 def Admin(request):
     return render(request,'index.html')
 
-
+@login_required(login_url='/Login/')
 def comment(request):
     if request.method == 'POST':
         name = request.POST.get('name')

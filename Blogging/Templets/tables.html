@@ -347,11 +347,20 @@
                                             </td>
                                             <td>{{ article.date }}</td>
                                         </tr>
-                                    {% endfor %}
+                                   
                                     <td>{{ article.date }}</td>
-                <td>
+                
+                    <td>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete_article" value="{{ article.id }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
                     <!-- Add button for deleting the post -->
-                </td>
+                
                 
             </tbody>
         </table>
@@ -399,11 +408,23 @@
                                 </thead>
                                 
                                 <tbody>
-                                    {% for article in page_obj1 %}
+                                    {% for comment in page_obj1 %}
                                     <tr>
-                                        <td>{{ article.name }}</td>
-                                        <td>{{ article.email }}</td>
-                                        <td>{{ article.comment }}</td>
+                                        <td>{{ comment.name }}</td>
+                                        <td>{{ comment.email }}</td>
+                                        <td>{{ comment.comment }}</td>
+                                        <!-- Add the delete form for comments -->
+                                        <td>
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                {% if comment.id %}
+                                                    <input type="hidden" name="delete_comment" value="{{ comment.id }}">
+                                                    <button type="submit">Delete</button>
+                                                {% else %}
+                                                    <span>Error: Comment ID is missing.</span>
+                                                {% endif %}
+                                            </form>
+                                        </td>
                                     </tr>
                                 {% endfor %}
             
@@ -431,7 +452,6 @@
 
         </div>
             
-
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
