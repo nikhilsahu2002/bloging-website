@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'home.html' %}
+ 
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>document</title>
+  
+</head>
+{% block body %}
+
+  <body style="background-color: rgb(227, 227, 227);">
+
+    <center>
+      <h1 style="font-style:itallic; color: black;"> Food</h1>
+    </center>
+  
+    <div class="container"
+      style="border: 0px solid black; width: 80%; margin-top: 120px; background-color: rgb(255, 255, 255);">
+      </style>
+  
+    <center>
+      {% for i in context %}
+      <center>
+      {% if i.image %}
+      <img src="{{ i.image.url }}" width="600px" style="margin-top: 20px;">
+      {% elif i.image_url %}
+      <img src="{{ i.image_url }}" width="600px" style="margin-top: 20px;">
+      {% endif %}
+      </center>
+      <h1 style="text-align: center;">
+        <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
+          {{ i.headline }}
+        </a>
+      </h1>
+      <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">
+        {{i.description}}
+      </p>
+  {% endfor %}
+    </div>
+      
+    
+  </body>
+  {% endblock  %}
+</html>

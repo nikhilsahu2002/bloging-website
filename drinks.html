@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+<html lang="en">
+<head></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+</head></script>
+<title>Document</title>
+</head>
+   {% block body %}
+
+   <body style="background-color: rgb(216, 210, 210);">
+
+    <center>
+      <h1 style="font-style:itallic; color: black;margin-top: 100px;"> Drink</h1>
+    </center>
+  
+    <div class="container"
+      style="border: 0px solid black; width: 80%; margin-top: 120px; background-color: rgb(255, 255, 255);">
+      </style>
+  
+    <center>
+      {% for i in context %}
+      <center>
+      {% if i.image %}
+      <img src="{{ i.image.url }}" width="600px" style="margin-top: 20px;">
+      {% elif i.image_url %}
+      <img src="{{ i.image_url }}" width="600px" style="margin-top: 20px;">
+      {% endif %}
+      </center>
+      <h1 style="text-align: center;">
+        <a href="{{ i.slug }}" style="color: inherit; text-decoration: none;">
+          {{ i.headline }}
+        </a>
+      </h1>
+      <p style="width: 800px; font-family: 'Kelvinch',sans-serif ;">
+        {{i.description}}
+      </p>
+  {% endfor %}
+    </div>
+      
+</body>
+{% endblock %}
+</html>
